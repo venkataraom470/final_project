@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Register</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+        }
+
+        .RegistrationContainer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .registration {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            padding: 20px;
+        }
+
+        .registration h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        .registration label {
+            display: block;
+            margin-bottom: 6px;
+            color: #555;
+        }
+
+        .registration input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .registration button {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            width: 100%;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .registration button:hover {
+            background-color: #45a049;
+        }
+
+        .error {
+            text-align: center;
+            color: red;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="RegistrationContainer">
+    <div class="registration">
+
+        <h2>User Registration</h2>
+
+        <form th:action="@{/saveUser}" 
+              method="post"
+              th:object="${user}">
+
+            <label>Name</label>
+            <input type="text" th:field="*{uname}" required>
+
+            <label>Email</label>
+            <input type="email" th:field="*{uemail}" required>
+
+            <label>Phone Number</label>
+            <input type="text" th:field="*{unumber}" pattern="[0-9]{10}" required>
+
+            <label>Password</label>
+            <input type="password" th:field="*{upassword}" required>
+
+            <button type="submit">Register</button>
+        </form>
+
+        <p class="error" th:text="${error}"></p>
+
+        <p style="text-align:center;">
+            Already have an account?
+            <a th:href="@{/Login}">Login</a>
+        </p>
+
+    </div>
+</div>
+
+</body>
+</html>

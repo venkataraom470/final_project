@@ -1,0 +1,23 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Order Success</title>
+</head>
+
+<body style="background:navajowhite; text-align:center; padding-top:120px;">
+
+<h3 style="color:green;">Ordered Successfully 🎉</h3>
+
+<h4>Your purchased amount is:
+    <span th:text="'₹ ' + ${amount} + ' /-'"></span>
+</h4>
+
+<br>
+<a th:href="@{/products}"
+   style="background:darkgreen; color:white; padding:10px; text-decoration:none;">
+   Back to Products
+</a>
+
+</body>
+</html>

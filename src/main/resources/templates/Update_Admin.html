@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Update Admin</title>
+    <link rel="stylesheet" th:href="@{/css/Update_Admin.css}" />
+</head>
+
+<body>
+
+<a th:href="@{/admin/services}">⬅ Back to Services</a>
+
+<div class="updateAdmin">
+    <h3 style="color: red;">UPDATE EXISTING ADMIN / PARTNER</h3>
+
+    <form th:action="@{'/updatingAdmin/' + ${admin.adminId}}"
+          method="post"
+          th:object="${admin}">
+
+        <!-- Admin ID (hidden) -->
+        <input type="hidden" th:field="*{adminId}" />
+
+        <!-- Admin Name -->
+        <label>Admin Name :</label>
+        <input type="text" th:field="*{adminName}" required />
+
+        <!-- Admin Email -->
+        <label>Admin Email :</label>
+        <input type="email" th:field="*{adminEmail}" required />
+
+        <!-- Admin Password -->
+        <label>Admin Password :</label>
+        <input type="password"
+               th:field="*{adminPassword}"
+               placeholder="Enter new password"
+               required />
+
+        <br><br>
+        <button type="submit">Update Admin</button>
+    </form>
+</div>
+<div class="corner-logo">
+    <img src="/Images/logo11.png" alt="BiteBee Logo">
+</div>
+
+</body>
+</html>

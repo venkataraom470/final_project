@@ -1,0 +1,36 @@
+
+<nav th:fragment="navbar()">
+    <img th:src="@{/Images/logob.png}" alt="Logo" class="logo">
+
+    <ul>
+        <!-- Home -->
+        <li>
+            <a th:href="@{/home}">Home</a>
+        </li>
+
+        <!-- Products → ONLY after user login -->
+        <li th:if="${session.loggedUser != null}">
+            <a th:href="@{/products}">Products</a>
+        </li>
+
+        <!-- Locate Us -->
+        <li>
+            <a th:href="@{/location}">Locate Us</a>
+        </li>
+
+        <!-- About Us -->
+        <li>
+            <a th:href="@{/about}">About Us</a>
+        </li>
+
+        <!-- Login → ONLY if NOT logged in -->
+        <li th:if="${session.loggedUser == null}">
+            <a th:href="@{/Login}">Log In</a>
+        </li>
+
+        <!-- Logout → ONLY after login -->
+        <li th:if="${session.loggedUser != null}">
+            <a th:href="@{/logout}">Logout</a>
+        </li>
+    </ul>
+</nav>

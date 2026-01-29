@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Admin : Update User</title>
+    <link rel="stylesheet" th:href="@{/css/Update_User.css}" />
+</head>
+
+<body>
+
+<a th:href="@{/admin/services}">⬅ Back to Services</a>
+
+<div class="updateUser">
+    <h3 style="color: red;">UPDATE EXISTING USER / CUSTOMER</h3>
+
+    <form th:action="@{/updatingUser/{id}(id=${user.u_id})}"
+          method="post"
+          th:object="${user}">
+
+        <!-- Hidden User ID -->
+        <input type="hidden" th:field="*{u_id}" />
+
+        <!-- User Name -->
+        <label>User Name :</label>
+        <input type="text" th:field="*{uname}" required />
+
+        <!-- User Email -->
+        <label>User Email :</label>
+        <input type="email" th:field="*{uemail}" required />
+
+        <!-- User Number -->
+        <label>User Number :</label>
+        <input type="tel"
+               th:field="*{unumber}"
+               pattern="[0-9]{10}"
+               required />
+
+        <!-- User Password -->
+        <label>User Password :</label>
+        <input type="password"
+               th:field="*{upassword}"
+               placeholder="Enter new password"
+               required />
+
+        <br><br>
+        <button type="submit">Update User</button>
+    </form>
+</div>
+<div class="corner-logo">
+    <img src="/Images/logo11.png" alt="BiteBee Logo">
+</div>
+
+
+</body>
+</html>

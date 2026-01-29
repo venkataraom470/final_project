@@ -6,6 +6,7 @@
 
     <modelVersion>4.0.0</modelVersion>
 
+    <!-- Spring Boot Parent -->
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
@@ -13,19 +14,24 @@
         <relativePath/>
     </parent>
 
+    <!-- Project Info -->
     <groupId>com.cg</groupId>
     <artifactId>BiteBeeFoodApplication</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+    <packaging>jar</packaging>
+
     <name>BiteBeeFoodApplication</name>
     <description>Web application using Spring Boot MVC</description>
 
+    <!-- Java Version -->
     <properties>
         <java.version>17</java.version>
     </properties>
 
+    <!-- Dependencies -->
     <dependencies>
 
-        <!-- Spring MVC + REST -->
+        <!-- Spring Web (MVC + REST) -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
@@ -56,14 +62,6 @@
             <scope>runtime</scope>
         </dependency>
 
-        <!-- DevTools -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-devtools</artifactId>
-            <scope>runtime</scope>
-            <optional>true</optional>
-        </dependency>
-
         <!-- Testing -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -73,13 +71,31 @@
 
     </dependencies>
 
+    <!-- Build -->
     <build>
         <plugins>
+
+            <!-- Spring Boot Plugin -->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <mainClass>com.cg.BiteBeeFoodApplication</mainClass>
+                </configuration>
             </plugin>
+
         </plugins>
     </build>
 
+    <!-- Production Profile (Railway uses -Pproduction) -->
+    <profiles>
+        <profile>
+            <id>production</id>
+            <properties>
+                <spring.profiles.active>prod</spring.profiles.active>
+            </properties>
+        </profile>
+    </profiles>
+
 </project>
+
